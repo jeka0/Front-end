@@ -6,7 +6,7 @@ function App() {
     <div className="App">
     <input type = {"text"} placeholder ={"login"}/>
      <input type = {"text"} placeholder ={"password"}/>
-      <button onclick = "HandelClick">click me</button>
+      <button onClick ={HandelClick}>click me</button>
     </div>
   );
 }
