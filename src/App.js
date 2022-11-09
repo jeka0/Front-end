@@ -1,24 +1,21 @@
-
 import './App.css';
 import {useState} from 'react';
+
 function App() {
-  const [login, setLogin] = useState('');
-  const [password, setPassword] = useState('');
-  let HandelClick = ()=>{
-    let json = {
-      "login": login,
-      "password": password
-    }
-    console.log( JSON.stringify(json) );
+  const [form,setForm] = useState({})
+
+  let handelClick = ()=>{
+    console.log( JSON.stringify(form) );
   }
-  let updateLogin = (event)=>setLogin(event.target.value);
-  let updatePassword = (event)=>setPassword(event.target.value);
+
+  let updateForm = (event)=>setForm({...form, [event.target.name] : event.target.value})
+
   return (
     <div className="App">
       <div className="form">
-        <input type = {"text"} placeholder ={"login"} onInput = {updateLogin}/>
-        <input type = {"text"} placeholder ={"password"} onInput = {updatePassword}/>
-        <button onClick ={HandelClick}>Send</button>
+        <input type = {"text"} name = {"login"} placeholder ={"login"} onChange = {updateForm}/>
+        <input type = {"text"}  name = {"password"} placeholder ={"password"} onChange = {updateForm}/>
+        <button onClick ={handelClick}>Send</button>
       </div>
     </div>
   );
