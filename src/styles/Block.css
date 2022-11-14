@@ -1,0 +1,15 @@
+.Block{
+    border: solid black;
+    text-align: center;
+    align-items: center;
+    width: 25%;
+    padding: 2% 3%;
+    border-radius: 60px;
+}
+
+h2{
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    font-size: 25px;
+    line-height: 22px;
+}
