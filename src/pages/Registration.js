@@ -6,7 +6,7 @@ import Button from '../components/Button.js';
 import '../styles/Area.css';
 
 function Registration() {
-    const [form,setForm] = useState({})
+  const [form,setForm] = useState({})
 
   let handelClick = ()=>{
     console.log( JSON.stringify(form) );
@@ -15,13 +15,15 @@ function Registration() {
   let updateForm = (event)=>setForm({...form, [event.target.name] : event.target.value})
     return (
       <div className='Area'>
-        <Block className='Block' name="registration">
-            <Input type = {"text"} name = {"login"} placeholder ={"login"} onChange = {updateForm}/>
-            <Input type = {"text"}  name = {"firstName"} placeholder ={"firstName"} onChange = {updateForm}/>
-            <Input type = {"text"} name = {"lastName"} placeholder ={"lastName"} onChange = {updateForm}/>
-            <Input type = {"password"}  name = {"password"} placeholder ={"password"} onChange = {updateForm}/>
-            <Button onClick ={handelClick}>Send</Button>
-            <Link to="/">login</Link>
+        <Block className='Block' name="Sign up">
+            <Input type = {"email"} name = {"email"} placeholder ={"Enter email"} required onChange = {updateForm}/>
+            <Input type = {"text"}  name = {"firstName"} placeholder ={"Enter first name"} onChange = {updateForm}/>
+            <Input type = {"text"} name = {"lastName"} placeholder ={"Enter last name"} onChange = {updateForm}/>
+            <Input type = {"password"}  name = {"password"} placeholder ={"Enter password"} required onChange = {updateForm}/>
+            <Button name={"send"} size={"small"} onClick ={handelClick}>Send</Button>
+            <Link to="/signIn">
+              <Button name={"link"} size={"small"}>Sign in</Button>
+            </Link>
         </Block>
       </div>
     );

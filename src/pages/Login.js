@@ -6,7 +6,7 @@ import Button from '../components/Button.js';
 import '../styles/Area.css';
 
 function Login() {
-    const [form,setForm] = useState({})
+  const [form,setForm] = useState({})
 
   let handelClick = ()=>{
     console.log( JSON.stringify(form) );
@@ -16,11 +16,13 @@ function Login() {
 
     return (
         <div className="Area">
-            <Block className='Block' name="login">
-                <Input type = {"text"} name = {"login"} placeholder ={"login"} onChange = {updateForm}/>
-                <Input type = {"password"}  name = {"password"} placeholder ={"password"} onChange = {updateForm}/>
-                <Button onClick ={handelClick}>Send</Button>
-                <Link to="/registration">registration</Link>
+            <Block className='Block' name="Sign in">
+                <Input type = {"email"} name = {"email"} placeholder ={"Enter email"} required onChange = {updateForm}/>
+                <Input type = {"password"}  name = {"password"} placeholder ={"Enter password"} required onChange = {updateForm}/>
+                <Button name={"send"} onClick ={handelClick}>Send</Button>
+                <Link to="/signUp">
+                  <Button name={"link"}>Sign up</Button>
+                </Link>
             </Block>
       </div>
     );

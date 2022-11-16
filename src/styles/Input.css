@@ -8,7 +8,5 @@ input{
     border: none;
     background: #f1f1f1;
     opacity: 0.9;
-    margin-top: 20px;
-    margin-left: 50%;
-    transform: translate(-50%, 0);
 }
+
