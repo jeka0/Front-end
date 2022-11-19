@@ -2,14 +2,14 @@
     border: solid black;
     text-align: center;
     align-items: center;
-    width: 25%;
-    padding: 2% 3%;
+    width: 370px;
+    padding: 40px 10px;
     border-radius: 60px;
 }
 
 h2{
     font-family: 'Times New Roman', Times, serif;
     text-align: center;
-    font-size: 25px;
+    font-size: 26px;
     line-height: 22px;
 }

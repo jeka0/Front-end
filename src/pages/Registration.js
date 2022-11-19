@@ -8,24 +8,25 @@ import '../styles/Area.css';
 function Registration() {
   const [form,setForm] = useState({})
 
-  let handelClick = ()=>{
+  const onSubmit = (event)=>{
+    event.preventDefault();
     console.log( JSON.stringify(form) );
   }
 
   let updateForm = (event)=>setForm({...form, [event.target.name] : event.target.value})
     return (
-      <div className='Area'>
-        <Block className='Block' name="Sign up">
-            <Input type = {"email"} name = {"email"} placeholder ={"Enter email"} required onChange = {updateForm}/>
-            <Input type = {"text"}  name = {"firstName"} placeholder ={"Enter first name"} onChange = {updateForm}/>
-            <Input type = {"text"} name = {"lastName"} placeholder ={"Enter last name"} onChange = {updateForm}/>
-            <Input type = {"password"}  name = {"password"} placeholder ={"Enter password"} required onChange = {updateForm}/>
-            <Button name={"send"} size={"small"} onClick ={handelClick}>Send</Button>
-            <Link to="/signIn">
-              <Button name={"link"} size={"small"}>Sign in</Button>
+      <form onSubmit = {onSubmit} className ='Area'>
+        <Block className = 'Block' name= "Sign up">
+            <Input className = "AuthInput" type = "email" name = "email" placeholder = "Enter email" required onChange = {updateForm}/>
+            <Input className = "AuthInput" type = "text"  name = "firstName" placeholder = "Enter first name" onChange = {updateForm}/>
+            <Input className = "AuthInput" type = "text" name = "lastName" placeholder = "Enter last name" onChange = {updateForm}/>
+            <Input className = "AuthInput" type = "password"  name = "password" placeholder = "Enter password" required onChange = {updateForm}/>
+            <Button className = "AuthButt" name = "submit">Send</Button>
+            <Link to ="/sign-In">
+              <Button className = "AuthButt" name = "link">Sign in</Button>
             </Link>
         </Block>
-      </div>
+      </form>
     );
   }
   

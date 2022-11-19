@@ -12,22 +12,22 @@
     transform: translate(-50%, -50%);
 }
 
-Input{
+.AuthInput{
     margin-top: 20px;
     margin-left: 50%;
     transform: translate(-50%, 0);
 }
 
-Button{
+.AuthButt{
     margin-top: 20px;
-    margin-left: 10px;
-    margin-right: 10px;
 }
 
-Button[name="send"]{
+.AuthButt[name = "submit"]{
     float: left;
+    margin-left: 46px;
 }
 
-Button[name="link"]{
+.AuthButt[name = "link"]{
     float: right;
+    margin-right: 46px;
 }
