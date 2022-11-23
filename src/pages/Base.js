@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import Block from "../components/Block.js";
-import Button from '../components/Button.js';
+import Block from "../components/Block/Block.js";
+import Button from '../components/Button/Button.js';
 import '../styles/Area.css';
 import '../styles/Base.css';
 

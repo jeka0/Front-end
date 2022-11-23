@@ -3,18 +3,19 @@ import React, { createContext, useState } from "react";
 export const AuthContext = createContext({});
 
 export const Auth = ({ children })=>{
-    const [isAuth, setIsAuth] = useState(/*window.sessionStorage.getItem("isAuth") ||*/ false);
+    const [isAuth, setIsAuth] = useState(JSON.parse(window.localStorage.getItem("isAuth")));
     const [user, setUser] = useState({});
 
     const login = (data) => {
         setIsAuth(true);
         setUser(data);
-        //window.sessionStorage.setItem("isAuth", true);
+        window.localStorage.setItem("isAuth", true);
     };
 
     const logout = () => {
         setIsAuth(false);
         setUser({});
+        window.localStorage.setItem("isAuth", false);
     };
 
     return (

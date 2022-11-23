@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
-import Block from "../components/Block.js";
-import Input from '../components/Input.js';
-import Button from '../components/Button.js';
+import Block from "../components/Block/Block.js";
+import Input from '../components/Input/Input.js';
+import Button from '../components/Button/Button.js';
 import { useAuth } from '../auth/useAuth.js';
 import '../styles/Area.css';
 
@@ -10,7 +10,7 @@ function Login() {
   const [form, setForm] = useState({})
   const { login }= useAuth();
   const navigate = useNavigate();
-
+  
   const onSubmit = (event)=>{
     event.preventDefault();
     login(form);

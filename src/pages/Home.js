@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import Button from '../components/Button.js';
+import Button from '../components/Button/Button.js';
+import { useAuth } from '../auth/useAuth.js';
 
 function Home() {
-    
+  const { logout } = useAuth();  
       return (
         <div>
             <h1>OK</h1>
@@ -13,6 +14,7 @@ function Home() {
           <Link to = "/sign-Up">
             <Button >Sign up</Button>
           </Link>
+          <Button onClick = { logout }>logout</Button>
         </div>
       );
     }
