@@ -1,6 +1,5 @@
 import React from 'react';
-import { Routes, Route } from "react-router-dom";
-import Base from './pages/Base';
+import { Routes, Route, Navigate } from "react-router-dom";
 import Login from "./pages/Login";
 import Registration from "./pages/Registration"
 import Home from './pages/Home';
@@ -11,28 +10,25 @@ import UnauthorizedRoute from './security/UnauthorizedRoute';
 function App() {
   return (
     <Auth>
-      <Routes>
-        <Route path="/" element={
-          <UnauthorizedRoute>
-            <Base />
-          </UnauthorizedRoute>
-        }/>
-        <Route path="/sign-In" element={
-          <UnauthorizedRoute>
+      <UnauthorizedRoute>
+        <Routes>
+          <Route path="/*" element={<Navigate to="/sign-In"/>}/>
+          <Route path="/sign-In" element={
             <Login />
-          </UnauthorizedRoute>
-        }/>
-        <Route path="/sign-Up" element={
-          <UnauthorizedRoute>
+          }/>
+          <Route path="/sign-Up" element={
             <Registration />
-          </UnauthorizedRoute>
-        }/>
-        <Route path="/home" element={
-          <AuthorizedRoute>
-            <Home />
-          </AuthorizedRoute>
-        }/>
-      </Routes>
+          }/>
+        </Routes>
+      </UnauthorizedRoute>
+      <AuthorizedRoute>
+        <Routes>
+        <Route path="/*" element={<Navigate to="/home"/>}/>
+          <Route path="/home" element={
+              <Home />
+            }/>
+        </Routes>
+      </AuthorizedRoute>
     </Auth>
   );
 }

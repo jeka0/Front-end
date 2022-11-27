@@ -1,25 +1,37 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
+import { reqLogin, reqRegister } from "../services/authService";
 
 export const AuthContext = createContext({});
 
 export const Auth = ({ children })=>{
-    const [isAuth, setIsAuth] = useState(JSON.parse(window.localStorage.getItem("isAuth")));
+    const [isAuth, setIsAuth] = useState(false);
     const [user, setUser] = useState({});
 
-    const login = (data) => {
+    useEffect(()=> {
+        if(window.localStorage.getItem('tokens')){
+            setIsAuth(true);
+        }
+    }, [])
+
+    const login = async (data) => {
+        await reqLogin(data);
         setIsAuth(true);
         setUser(data);
-        window.localStorage.setItem("isAuth", true);
+    };
+
+    const register = async (data) =>{
+        await reqRegister(data);
+        await login({ email: data.email, password: data.password });
     };
 
     const logout = () => {
         setIsAuth(false);
         setUser({});
-        window.localStorage.setItem("isAuth", false);
+        window.localStorage.setItem("tokens", "");
     };
 
     return (
-        <AuthContext.Provider value={ {isAuth, user, login, logout} }>
+        <AuthContext.Provider value={ {isAuth, user, login, logout, register} }>
             {children}
         </AuthContext.Provider>
     )
