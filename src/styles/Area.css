@@ -14,15 +14,16 @@
     width: 30px;
 }
 
-.custom{
-    color: #ffffff;
-    background-color: #555555;
+.auth-background{
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
 }
 
-.custom[color="custom"]:hover{
-    background-color: #414141;
-}
-
-.custom[color="custom"]:disabled{
-    background-color: #949494;
+.auth-container{
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
 }

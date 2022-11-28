@@ -1,0 +1,21 @@
+.home-background{
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.home-container{
+    width: 50px;
+    height: 100%;
+    top:0;
+    position: sticky;
+}
+
+.home-content{
+    width: 100%;
+}
+
+.home-list{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0)
+}

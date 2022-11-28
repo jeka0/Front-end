@@ -48,8 +48,9 @@ function Login() {
   }
 
   useEffect(()=>{
-    if(errorForm.emailError.message === "Wrong email or password") setError({...errorForm, emailError: valid});
-    if(errorForm.passwordError.message === "Wrong email or password") setError({...errorForm, passwordError: valid});
+    for (const key in errorForm){
+      if(errorForm[key].message === "Wrong email or password") setError({...errorForm, [key]: valid});
+    }
   },[form])
 
   const updateForm = async (event)=>{
@@ -59,8 +60,8 @@ function Login() {
   }
 
   return (
-    <Background>
-      <Container>
+    <Background className="auth-background">
+      <Container className="auth-container">
         <h1><strong>Sign in</strong></h1>
         <Box className = "margin">
           <TextField 

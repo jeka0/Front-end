@@ -48,8 +48,9 @@ function Registration() {
   }
 
   useEffect(()=>{
-    if(errorForm.emailError.message === "Wrong email or password") setError({...errorForm, emailError: valid});
-    if(errorForm.passwordError.message === "Wrong email or password") setError({...errorForm, passwordError: valid});
+    for (const key in errorForm){
+      if(errorForm[key].message === "Wrong email or password") setError({...errorForm, [key]: valid});
+    }
   },[form])
 
   const updateForm = (event)=>{
@@ -59,9 +60,9 @@ function Registration() {
   }
 
   return (
-    <Background>
-      <Container>
-        <h1><strong>Sign in</strong></h1>
+    <Background className="auth-background">
+      <Container className="auth-container">
+        <h1><strong>Sign up</strong></h1>
         <Box className = "margin">
           <TextField 
             className = "mat-Input" 
@@ -88,7 +89,7 @@ function Registration() {
           />
         </Box>
         <Box className = "margin">
-          <TextField 
+          <TextField
             className = "mat-Input" 
             type = "text"  
             name = "lastName" 

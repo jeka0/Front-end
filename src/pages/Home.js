@@ -1,21 +1,26 @@
 import React from 'react';
-import { Link } from "react-router-dom";
 import { Button } from '@material-ui/core';
 import { useAuth } from '../auth/useAuth.js';
+import Background from '../components/background/background.js';
+import Container from '../components/container/container.js';
+import List from '../components/postList/postList.js';
+import '../styles/Home.css'
 
 function Home() {
   const { logout } = useAuth();  
+  const posts = [{id:1},{id:2},{id:3},{id:4},{id:5},{id:6}]
       return (
-        <div>
+        <Background className="home-background">
+          <Container className="home-container">
             <h1>OK</h1>
-            <Link to ="/sign-In">
-            <Button >Sign in</Button>
-          </Link>
-          <Link to = "/sign-Up">
-            <Button >Sign up</Button>
-          </Link>
-          <Button onClick = { logout }>logout</Button>
-        </div>
+            <Button onClick = { logout }>logout</Button>
+          </Container>
+          <div className='home-content'>
+            <List list={posts} className='home-list'>
+
+            </List>
+          </div>
+        </Background>
       );
     }
     

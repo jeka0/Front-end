@@ -3,7 +3,7 @@ import './background.css'
 
 function Background(props) {
     return (
-      <div className="background">
+      <div className={"background " + props.className}>
         {props.children}
       </div>
     );
