@@ -9,7 +9,7 @@ function List(props) {
       <Post className='post' key={post.id} data={post} ></Post>
     )
     return (
-      <div className={props.className}>
+      <div className={'list ' + props.className}>
         {listElements}
       </div>
     );

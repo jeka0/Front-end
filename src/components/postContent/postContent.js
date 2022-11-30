@@ -5,9 +5,8 @@ import './postContent.css';
 function Content(props) {
 
     return (
-        <div className='content'>
+        <div className={'content ' + props.className} onClick = {props.onClick}>
             <img src={image} alt="test" />
-            <p>id : {props.data.id}</p>
       </div>
     );
   }

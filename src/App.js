@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import { Auth } from "./auth/authContext"
 import AuthorizedRoute from './security/AuthorizedRoute';
 import UnauthorizedRoute from './security/UnauthorizedRoute';
+import SinglePost from './pages/SinglePost';
 
 function App() {
   return (
@@ -24,6 +25,9 @@ function App() {
       <AuthorizedRoute>
         <Routes>
         <Route path="/*" element={<Navigate to="/home"/>}/>
+          <Route path="/post/:id" element={
+              <SinglePost />
+            }/>
           <Route path="/home" element={
               <Home />
             }/>

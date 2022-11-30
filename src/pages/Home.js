@@ -4,11 +4,12 @@ import { useAuth } from '../auth/useAuth.js';
 import Background from '../components/background/background.js';
 import Container from '../components/container/container.js';
 import List from '../components/postList/postList.js';
+import { getPosts } from '../services/authService.js';
 import '../styles/Home.css'
 
 function Home() {
   const { logout } = useAuth();  
-  const posts = [{id:1},{id:2},{id:3},{id:4},{id:5},{id:6}]
+  const posts = getPosts();
       return (
         <Background className="home-background">
           <Container className="home-container">

@@ -10,7 +10,7 @@ function Action(props) {
     }
 
     return (
-        <div className='action'>
+        <div className={'action ' + props.className}>
             <div className='like'>
                 {like? <Favorite style={{ color: 'red', fontSize: 28 }} onClick={onLike} />: <FavoriteBorder style={{ fontSize: 28 }} onClick={onLike} />}
             </div>

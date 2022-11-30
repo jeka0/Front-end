@@ -5,7 +5,7 @@ import './postHeader.css';
 function Header(props) {
 
     return (
-        <div className='header'>
+        <div className={'header ' + props.className}>
             <img src={image} alt="test" />
             <p>Some user</p>
         </div>
