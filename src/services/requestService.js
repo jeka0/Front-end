@@ -6,7 +6,7 @@ export const axiosInstance = axios.create({
   withCredentials: true,
 });
 
-const getSessionFromStorage = () => {
+export const getSessionFromStorage = () => {
     try{
         const data = localStorage.getItem('tokens');
         return data? JSON.parse(data) : "";

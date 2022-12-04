@@ -15,7 +15,7 @@ function Post(props) {
 
     return (
       <Container className="post-container">
-        <Header />
+        <Header data={props.data}/>
         <Content data={props.data} onClick={nav} />
         <Action />
         <Chat data={props.data} onClick={nav} />
