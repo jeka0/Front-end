@@ -14,8 +14,12 @@ export const Auth = ({ children })=>{
 
     const init = async ()=>{
         if(window.localStorage.getItem('tokens')){
-            setIsAuth(true);
-            setUser(await reqGetUser());
+            reqGetUser()
+            .then((user)=>{
+                setIsAuth(true);
+                setUser(user);
+            })
+            .catch((err)=>setIsAuth(false));
         }
     }
 
