@@ -5,7 +5,7 @@ function Chat(props) {
 
     return (
         <div className={'chat ' + props.className} onClick = {props.onClick}>
-            <p>id : {props.data.id}</p>
+            <p>{props.data.message}</p>
       </div>
     );
   }

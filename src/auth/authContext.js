@@ -1,11 +1,11 @@
 import React, { createContext, useState, useEffect } from "react";
 import { reqLogin, reqRegister } from "../services/authService";
-import { reqGetUser } from "../services/userService";
+import { getUser } from "../services/userService";
 
 export const AuthContext = createContext({});
 
 export const Auth = ({ children })=>{
-    const [isAuth, setIsAuth] = useState(false);
+    const [isAuth, setIsAuth] = useState();
     const [user, setUser] = useState();
 
     useEffect(()=> {
@@ -14,19 +14,24 @@ export const Auth = ({ children })=>{
 
     const init = async ()=>{
         if(window.localStorage.getItem('tokens')){
-            reqGetUser()
+            getUser()
             .then((user)=>{
                 setIsAuth(true);
                 setUser(user);
             })
-            .catch((err)=>setIsAuth(false));
+            .catch((err)=>{
+                setIsAuth(false)
+            });
+        }
+        else {
+            setIsAuth(false);
         }
     }
 
     const login = async (data) => {
         await reqLogin(data);
         setIsAuth(true);
-        setUser(await reqGetUser());
+        setUser(await getUser());
     };
 
     const register = async (data) =>{

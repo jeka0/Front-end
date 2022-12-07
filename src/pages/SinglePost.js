@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom';
 import Background from '../components/background/background.js';
 import Container from '../components/container/container.js';
 import Chat from '../components/postChat/postChat.js';
@@ -28,9 +28,11 @@ function SinglePost() {
             <Container className="single-post-container">
                 <Content className="single-post-content" data={postData} />
                 <div className="subcontainer">
+                  <Link to={`/user/${postData.user.id}`}>
                     <Header className="single-post-header" data={postData}/>
-                    <Chat className="single-post-chat" data={postData} />
-                    <Action className="single-post-action" />
+                  </Link>
+                  <Chat className="single-post-chat" data={postData} />
+                  <Action className="single-post-action" />
                 </div>
             </Container>
         </Background>

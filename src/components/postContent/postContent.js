@@ -6,7 +6,7 @@ function Content(props) {
   
     return (
         <div className={'content ' + props.className} onClick = {props.onClick}>
-            <img src={url + props.data.image} alt="test" />
+            <img src={props.data ? url + props.data.image : props.image} alt="test" />
       </div>
     );
   }
