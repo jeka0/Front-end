@@ -17,15 +17,15 @@ function App() {
         <Routes>
           <Route path="/post/:id" element={ <SinglePost /> }/>
           <Route path="/post/create" element={ <CreatePost /> }/>
-          <Route exact path="/home" element={ <Home /> }/>
-          <Route exact path="/user/:id" element={ <User /> }/>
+          <Route path="/home" element={ <Home /> }/>
+          <Route path="/user/:id" element={ <User /> }/>
           <Route path="*" element={ <Navigate to="/home"/> }/>
         </Routes>
       </AuthorizedRoute>
       <UnauthorizedRoute>
         <Routes>
-          <Route exact path="/sign-In" element={ <Login /> }/>
-          <Route exact path="/sign-Up" element={ <Registration /> }/>
+          <Route path="/sign-In" element={ <Login /> }/>
+          <Route path="/sign-Up" element={ <Registration /> }/>
           <Route path="*" element={ <Navigate to="/sign-In"/> }/>
         </Routes>
       </UnauthorizedRoute>

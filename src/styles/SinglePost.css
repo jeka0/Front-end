@@ -40,3 +40,10 @@
     top:0;
     position: relative;
 }
+
+.Close{
+    position: absolute;
+    top: 0px;
+    width: 32px;
+    height: 32px;
+}

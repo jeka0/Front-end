@@ -15,7 +15,7 @@ function User() {
 
   useEffect(()=> {
     init();
-  }, [])
+  }, [id])
 
   const init = async ()=>{
     setUser(await getUserById(id));

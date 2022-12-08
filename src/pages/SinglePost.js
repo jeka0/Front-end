@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
+import { IconButton } from '@material-ui/core';
+import { Clear } from '@material-ui/icons';
 import Background from '../components/background/background.js';
 import Container from '../components/container/container.js';
 import Chat from '../components/postChat/postChat.js';
@@ -12,11 +14,16 @@ import '../styles/SinglePost.css'
 function SinglePost() {
     const { id } = useParams();
     const [postData, setPostData] = useState();
+    const navigate = useNavigate();
 
     useEffect(()=> {
       init();
     }, [])
-  
+    
+    const goBack = ()=>{
+      navigate(-1);
+    }
+
     const init = async ()=>{
       setPostData(await getPostById(id));
     }
@@ -25,6 +32,13 @@ function SinglePost() {
 
       return (
         <Background className="single-post-background">
+          <div className='Close'>
+              <IconButton
+                size='large'
+                onClick={goBack}>
+                <Clear/>
+              </IconButton>
+            </div>
             <Container className="single-post-container">
                 <Content className="single-post-content" data={postData} />
                 <div className="subcontainer">
