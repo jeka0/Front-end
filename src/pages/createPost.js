@@ -8,6 +8,7 @@ import { Clear } from '@material-ui/icons';
 import image from '../img/no-image.jpg'
 import { createPost } from '../services/postService.js';
 import { Button, TextField } from '@material-ui/core';
+import LoadImage from '../components/loadImage/loadImage.js';
 
 import '../styles/createPost.css'
 
@@ -23,10 +24,11 @@ function CreatePost() {
     }
 
     const changeImage = (e)=>{
-        
-        const file =  e.target.files[0];
-        setImage(file);
-        fileReader.readAsDataURL(file);
+        try{
+            const file =  e.target.files[0];
+            setImage(file);
+            fileReader.readAsDataURL(file);
+        }catch{}
     }
 
     const goBack = ()=>{
@@ -37,7 +39,7 @@ function CreatePost() {
         if(nowImage){
             const formdata = new FormData();
             formdata.append('image', nowImage);
-            formdata.append('message', message);
+            if(message)formdata.append('message', message);
             createPost(formdata)
             .then(goBack);
         }
@@ -51,7 +53,7 @@ function CreatePost() {
         <Background className="create-post-background">
             <div className='Close'>
               <IconButton
-                size='large'
+                size='medium'
                 onClick={goBack}>
                 <Clear/>
               </IconButton>
@@ -60,10 +62,7 @@ function CreatePost() {
                 <Content className="create-post-content" image={imageUrl || image}/>
                 <div className="create-subcontainer">
                     <h3>Choose an image</h3>
-                    <div className='create-image'>
-                        <label htmlFor='fileBut' className='load-file'><b>Load</b></label>
-                        <input id="fileBut" type="file" accept="image/*,image/jpeg" hidden onChange={changeImage}/>
-                    </div>
+                    <LoadImage className='create-image' name="Load" onChange={changeImage}/>
                     <div className='create-Input'>
                         <TextField 
                             type = "text" 
@@ -74,7 +73,7 @@ function CreatePost() {
                         />
                     </div>
                     <div className='create-send'>
-                        <Button onClick={send}>Send</Button>
+                        <Button onClick={send} disabled={!nowImage}>Send</Button>
                     </div>
                 </div>
             </Container>

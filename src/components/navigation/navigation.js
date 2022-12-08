@@ -17,6 +17,9 @@ function Navigation(props) {
         <Link to={`/user/${user.id}`}>
           <Button>My account</Button>
         </Link>
+        <Link to={`/user/update`}>
+          <Button>Update account info</Button>
+        </Link>
         <Link to={`/post/create`}>
           <Button>Create post</Button>
         </Link>

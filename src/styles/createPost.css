@@ -37,15 +37,6 @@
 
 }
 
-.load-file {
-    width: 100%;
-    height: 30px;
-    top: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 .create-image{
     display: flex;
     margin-top: 10px;
@@ -56,14 +47,6 @@
 .create-Input{
     display: flex;
     margin-top: 30px;
-}
-  
-.load-file:hover {
-    background-color: #f0f0f0;
-}
-  
-.load-file:active {
-    background-color: #909090;
 }
 
 .Close{

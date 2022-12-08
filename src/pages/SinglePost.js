@@ -34,7 +34,7 @@ function SinglePost() {
         <Background className="single-post-background">
           <div className='Close'>
               <IconButton
-                size='large'
+                size='medium'
                 onClick={goBack}>
                 <Clear/>
               </IconButton>

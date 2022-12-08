@@ -17,3 +17,11 @@ export const getUserById = async (id)=>{
   
   return data;
 }
+
+export const updateUser = async (body)=>{
+  await request({
+    method: 'PUT',
+    url: `/user`,
+    data: body
+  });
+}

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from "react-router-dom";
-import { TextField, Box, Button, InputAdornment, IconButton } from '@material-ui/core';
-import Visibility from "@material-ui/icons/Visibility";
-import VisibilityOff from "@material-ui/icons/VisibilityOff";
+import { Box, Button } from '@material-ui/core';
 import { useAuth } from '../auth/useAuth.js';
 import { validateEmail, validatePassword } from "../halpers/validation";
 import Container from '../components/container/container.js';
 import Background from '../components/background/background.js';
+import EmailInput from '../components/emailInput/emailInput.js';
+import PasswordInput from '../components/passwordInput/passwordInput.js';
 import '../styles/Area.css';
 
 function Login() {
@@ -64,43 +64,19 @@ function Login() {
       <Container className="auth-container">
         <h1><strong>Sign in</strong></h1>
         <Box className = "margin">
-          <TextField 
-            className = "mat-Input"
-            type = "email" 
-            name = "email" 
-            label = "Email"
-            placeholder = "Enter email" 
-            variant = "standard" 
-            error={!errorForm.emailError.isValid && errorForm.emailError.message !== ''} 
-            helperText={errorForm.emailError.message} 
-            required 
-            onChange = {updateForm}
+          <EmailInput 
+             error={!errorForm.emailError.isValid && errorForm.emailError.message !== ''} 
+             helperText={errorForm.emailError.message} 
+             onChange = {updateForm}
           />
         </Box>
         <Box className = "margin">
-          <TextField 
-            className = "mat-Input" 
-            type = {showPassword ? "text" : "password"}  
-            name = "password" 
-            label = "Password" 
-            placeholder = "Enter password" 
-            variant = "standard" 
+          <PasswordInput 
+            showPassword={showPassword}
+            onChange = {updateForm}
             error={!errorForm.passwordError.isValid && errorForm.passwordError.message !== ''} 
             helperText={errorForm.passwordError.message} 
-            required 
-            onChange = {updateForm}
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">
-                  <IconButton
-                    className='icon'
-                    size='small'
-                    onClick={togglePasswordVisibility}>
-                    {showPassword ? <VisibilityOff/> : <Visibility/>}
-                  </IconButton>
-                </InputAdornment>
-              )
-            }}
+            onClick={togglePasswordVisibility}
           />
         </Box>
         <Box className = "margin">

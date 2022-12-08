@@ -8,6 +8,7 @@ import AuthorizedRoute from './security/AuthorizedRoute';
 import UnauthorizedRoute from './security/UnauthorizedRoute';
 import SinglePost from './pages/singlePost';
 import CreatePost from './pages/createPost';
+import UpdateUser from './pages/updateUser';
 import User from './pages/user';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path="/post/create" element={ <CreatePost /> }/>
           <Route path="/home" element={ <Home /> }/>
           <Route path="/user/:id" element={ <User /> }/>
+          <Route path="/user/update" element={ <UpdateUser /> }/>
           <Route path="*" element={ <Navigate to="/home"/> }/>
         </Routes>
       </AuthorizedRoute>

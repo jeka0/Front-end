@@ -14,7 +14,15 @@ export const Auth = ({ children })=>{
 
     const init = async ()=>{
         if(window.localStorage.getItem('tokens')){
-            getUser()
+            update();
+        }
+        else {
+            setIsAuth(false);
+        }
+    }
+
+    const update = async ()=>{
+        getUser()
             .then((user)=>{
                 setIsAuth(true);
                 setUser(user);
@@ -22,10 +30,6 @@ export const Auth = ({ children })=>{
             .catch((err)=>{
                 setIsAuth(false)
             });
-        }
-        else {
-            setIsAuth(false);
-        }
     }
 
     const login = async (data) => {
@@ -48,7 +52,7 @@ export const Auth = ({ children })=>{
     if(isAuth && !user) return (<div>Loading</div>);
 
     return (
-        <AuthContext.Provider value={ {isAuth, user, login, logout, register} }>
+        <AuthContext.Provider value={ {isAuth, user, login, logout, register, update} }>
             {children}
         </AuthContext.Provider>
     )
