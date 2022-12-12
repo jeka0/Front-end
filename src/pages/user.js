@@ -12,6 +12,8 @@ function User() {
   const { id } = useParams();
   const [user, setUser] = useState();
   const [posts, setPosts] = useState();
+  const limit = 5;
+  let page = 1;
 
   useEffect(()=> {
     init();
@@ -19,7 +21,16 @@ function User() {
 
   const init = async ()=>{
     setUser(await getUserById(id));
-    setPosts(await getUserPosts(id));
+    setPosts(await getUserPosts(id, page, limit));
+  }
+
+  const getPostsRange = async ()=>{
+    page++;
+    const { data, total } = await getUserPosts(id, page, limit);
+    setPosts(prevState => ({
+      data:[...prevState.data, ...data],
+      total
+    }));
   }
 
   if(!user || !posts) return (<div>Loading</div>)
@@ -30,7 +41,7 @@ function User() {
           <div className="user-content">
           <UserInfo className="user-info" user = { user }/>
           <hr/>
-          <List list={posts} className='user-list'/>
+          <List list={posts.data} getPosts={getPostsRange} total={posts.total} className='user-list'/>
           </div>
         </Background>
       );

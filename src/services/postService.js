@@ -1,11 +1,11 @@
 import { request } from "./requestService";
 
-export const getPosts = async () => {
+export const getPosts = async (page, limit) => {
     const { data } = await request({
         method: 'GET',
-        url: '/post/all'
+        url: `/post/posts/?page=${page}&limit=${limit}`
     });
-    
+
     return data;
 }
   
@@ -18,10 +18,10 @@ export const getPostById = async (id) => {
   return data;
 }
 
-export const getUserPosts = async (id) => {
+export const getUserPosts = async (id, page, limit) => {
   const { data } = await request({
       method: 'GET',
-      url: `/post/user/${id}`
+      url: `/post/posts/user/${id}/?page=${page}&limit=${limit}`
   });
   
   return data;

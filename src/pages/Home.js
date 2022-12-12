@@ -7,13 +7,24 @@ import '../styles/Home.css'
 
 function Home() {
   const [posts, setPosts] = useState();
+  const limit = 5;
+  let page = 1;
 
   useEffect(()=> {
     init();
   }, [])
 
   const init = async ()=>{
-    setPosts(await getPosts());
+    setPosts(await getPosts(page, limit));
+  }
+
+  const getPostsRange = async ()=>{
+    page++;
+    const { data, total } = await getPosts(page, limit);
+    setPosts(prevState => ({
+      data: [...prevState.data, ...data],
+      total,
+    }));
   }
 
   if(!posts) return (<div>Loading</div>)
@@ -22,7 +33,7 @@ function Home() {
         <Background className="home-background">
           <Navigation />
           <div className='home-content'>
-            <List list={posts} className='home-list'/>
+            <List list={posts.data} getPosts={getPostsRange} total={posts.total} className='home-list'/>
           </div>
         </Background>
       );

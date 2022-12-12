@@ -22,7 +22,7 @@
     line-height: 35px;
 }
 
-.user-list{
+.user-list .list{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
