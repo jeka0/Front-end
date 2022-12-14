@@ -12,8 +12,8 @@ function User() {
   const { id } = useParams();
   const [user, setUser] = useState();
   const [posts, setPosts] = useState();
+  const [page, setPage] = useState();
   const limit = 5;
-  let page = 1;
 
   useEffect(()=> {
     init();
@@ -21,12 +21,14 @@ function User() {
 
   const init = async ()=>{
     setUser(await getUserById(id));
-    setPosts(await getUserPosts(id, page, limit));
+    const { data, total } = await getUserPosts(id, 1, limit);
+    setPosts({ data, total });
+    setPage(2);
   }
 
   const getPostsRange = async ()=>{
-    page++;
     const { data, total } = await getUserPosts(id, page, limit);
+    setPage(prevState => (prevState+1))
     setPosts(prevState => ({
       data:[...prevState.data, ...data],
       total

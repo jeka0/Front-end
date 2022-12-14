@@ -34,3 +34,21 @@ export const createPost = async (body) => {
     data: body,
   });
 };
+
+export const addLike = async (id)=>{
+  const { data } = await request({
+    method: 'PUT',
+    url: `/post/like/${id}`,
+  });
+
+  return data;
+}
+
+export const deleteLike = async (id)=>{
+  const { data } = await request({
+    method: 'DELETE',
+    url: `/post/like/${id}`,
+  });
+  
+  return data;
+}

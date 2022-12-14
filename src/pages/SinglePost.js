@@ -46,7 +46,7 @@ function SinglePost() {
                     <Header className="single-post-header" data={postData}/>
                   </Link>
                   <Chat className="single-post-chat" data={postData} />
-                  <Action className="single-post-action" />
+                  <Action className="single-post-action" data={postData} updatePost = {setPostData}/>
                 </div>
             </Container>
         </Background>
